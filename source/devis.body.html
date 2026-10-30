@@ -1,0 +1,116 @@
+{{HEADER}}
+
+<main id="top">
+<section class="devis-hero black">
+  <div class="wrap grid">
+    <div>
+      <span class="kicker">Componi · configurateur de devis</span>
+      <h1 style="margin-top:16px">Composez votre événement <span class="script">avec Lorenzo</span></h1>
+      <p class="lede">Choisissez l'occasion, le nombre d'invités et les animations. La comanda se remplit au fur et à mesure avec une estimation des quantités ; envoyez-la à Lorenzo en un clic.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section config" style="padding-top:48px">
+  <div class="wrap config-grid">
+    <form class="steps" id="cfg" novalidate>
+      <fieldset>
+        <legend><b>uno</b>L'occasion</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="occ" id="occ1" value="Soirée d'entreprise" checked><span>Soirée d'entreprise</span></label>
+          <label class="chip"><input type="radio" name="occ" id="occ2" value="Séminaire / réunion"><span>Séminaire / réunion</span></label>
+          <label class="chip"><input type="radio" name="occ" id="occ3" value="Salon / stand"><span>Salon / stand</span></label>
+          <label class="chip"><input type="radio" name="occ" id="occ4" value="Lancement / inauguration"><span>Lancement / inauguration</span></label>
+          <label class="chip"><input type="radio" name="occ" id="occ5" value="Mariage"><span>Mariage</span></label>
+          <label class="chip"><input type="radio" name="occ" id="occ6" value="Fête privée"><span>Fête privée</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><b>due</b>Le nombre d'invités</legend>
+        <div class="guests">
+          <input type="range" id="guests" min="20" max="1500" step="10" value="120" aria-label="Nombre d'invités">
+          <output id="guestsOut" for="guests">120</output>
+        </div>
+        <div class="presets" aria-label="Raccourcis">
+          <button type="button" data-g="40">40</button><button type="button" data-g="80">80</button><button type="button" data-g="150">150</button><button type="button" data-g="300">300</button><button type="button" data-g="600">600</button><button type="button" data-g="1000">1 000</button>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><b>tre</b>Les animations</legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="anim" id="a1" value="pizza" checked><span>Pizza &amp; focaccia</span></label>
+          <label class="chip"><input type="checkbox" name="anim" id="a2" value="mozza" checked><span>Mozzarella &amp; antipasti</span></label>
+          <label class="chip"><input type="checkbox" name="anim" id="a3" value="pasta"><span>Pâtes dans le parmesan</span></label>
+          <label class="chip"><input type="checkbox" name="anim" id="a4" value="tiramisu"><span>Bar à tiramisu</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><b>quattro</b>Le format</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="fmt" id="f1" value="cocktail" checked><span>Cocktail dînatoire (debout)</span></label>
+          <label class="chip"><input type="radio" name="fmt" id="f2" value="repas"><span>Repas complet</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><b>cinque</b>Quand et où</legend>
+        <div class="fields">
+          <div class="field"><label for="date">Date</label><input type="date" id="date"></div>
+          <div class="field"><label for="city">Ville / lieu</label><input type="text" id="city" placeholder="Paris 8e, Lyon, Deauville…"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><b>sei</b>Vos coordonnées</legend>
+        <div class="fields">
+          <div class="field"><label for="name">Nom</label><input type="text" id="name" autocomplete="name"></div>
+          <div class="field"><label for="company">Société / agence</label><input type="text" id="company" autocomplete="organization"></div>
+          <div class="field"><label for="email">E-mail</label><input type="email" id="email" autocomplete="email"></div>
+          <div class="field"><label for="phone">Téléphone</label><input type="tel" id="phone" autocomplete="tel"></div>
+          <div class="field full"><label for="msg">Précisions (budget, contraintes du lieu, régimes…)</label><textarea id="msg"></textarea></div>
+        </div>
+      </fieldset>
+    </form>
+
+    <aside class="side">
+      <div class="guide">
+        <svg class="lorenzo" viewBox="0 0 300 430" aria-hidden="true"><use href="#lorenzo"/></svg>
+        <div class="bubble" aria-live="polite"><span class="script">Lorenzo</span><span id="guideText">Ciao ! Dites-moi tout, je prépare votre comanda.</span></div>
+      </div>
+      <div class="ticket-wrap kraft">
+        <div class="ticket">
+          <div class="t-head"><img src="assets/logo-black.png" alt="Mazzucco" width="934" height="300"><div>Comanda n° <span id="tNum">0000</span></div></div>
+          <div class="row"><span>Occasion</span><span id="tOcc">—</span></div>
+          <div class="row"><span>Tavolo</span><span id="tGuests">—</span></div>
+          <div class="row"><span>Format</span><span id="tFmt">—</span></div>
+          <div class="row"><span>Date</span><span id="tDate">à définir</span></div>
+          <div class="row"><span>Lieu</span><span id="tCity">à définir</span></div>
+          <div class="sep"></div>
+          <div class="items" id="tItems"></div>
+          <div class="sep"></div>
+          <div class="row"><span>Équipe estimée</span><span id="tStaff">—</span></div>
+          <div class="row"><span>Durée de service</span><span id="tDur">—</span></div>
+          <p class="disc-t">Quantités indicatives, ajustées par Lorenzo selon votre déroulé. Tarif sur devis.</p>
+          <div class="stamp" id="stamp">Pronto!</div>
+        </div>
+        <div class="send">
+          <a class="btn wa-btn" id="sendWa" href="https://wa.me/33618700482" target="_blank" rel="noopener">Envoyer à Lorenzo sur WhatsApp</a>
+          <button class="btn btn-ink" type="button" id="copyBtn">Copier ma demande</button>
+          <p class="hint" id="copyHint">Ou par e-mail : <b>contact@mazzucco.fr</b></p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section" style="padding-block:64px">
+  <div class="wrap">
+    <div class="pros-grid">
+      <div class="pro"><h3>Réponse personnelle</h3><p>Lorenzo revient vers vous lui-même avec une proposition chiffrée.</p></div>
+      <div class="pro"><h3>Depuis 2005</h3><p>Entreprise immatriculée, Kbis et attestations sur demande.</p></div>
+      <div class="pro"><h3>Partout en France</h3><p>Au départ de l'Île-de-France, déplacements précisés dans le devis.</p></div>
+      <div class="pro"><h3>Sur mesure</h3><p>Chaque formule s'adapte à votre lieu, votre déroulé et vos invités.</p></div>
+    </div>
+  </div>
+</section>
+
+{{CONTACT}}
+</main>
