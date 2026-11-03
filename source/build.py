@@ -64,7 +64,7 @@ CONTACT = '''<section class="section black contact" id="contact">
 
 FOOTER = '''<footer>
   <div class="wrap foot">
-    <div><p><b style="color:#fff">Mazzucco Events</b> · Traiteur italien événementiel, Paris, Île-de-France et toute la France. Concept Mazzucco depuis 2015.</p><p>Bars à pizza et focaccia, bar à mozzarella, pâtes fraîches dans la roue de parmesan, bar à tiramisu.</p></div>
+    <div><p><b style="color:#fff">Mazzucco Events</b> · Traiteur italien événementiel, Paris, Île-de-France et toute la France. Concept Mazzucco depuis 2015.</p><p>Bars à pizza et focaccia, mozzarella, spritz, bruschetta, pâtes fraîches dans la roue de parmesan, tiramisu.</p></div>
     <div><p>Mentions légales : Monsieur Lorenzo Mazzucco, entrepreneur individuel. SIREN 480 403 211 · TVA FR38480403211 · NAF 5621Z.</p><p>Siège : 40 B promenade Marx Dormoy, 93460 Gournay-sur-Marne. © 2026 Mazzucco Events.</p></div>
   </div>
 </footer>'''
@@ -139,7 +139,7 @@ LD = {
     {"@type": "Person", "@id": SITE + "/#lorenzo", "name": "Lorenzo Mazzucco",
      "jobTitle": "Fondateur et chef traiteur, Mazzucco Events",
      "alumniOf": {"@type": "EducationalOrganization", "name": "École Ferrandi Paris"},
-     "description": "Né entre Venise et les Dolomites, Lorenzo Mazzucco travaille dans la restauration depuis plus de trente ans. Il dirige son entreprise de traiteur et d'organisation événementielle depuis 2005 et a créé le concept Mazzucco Mozza & Pizza en 2015 à Paris (7 rue d'Enghien).",
+     "description": "Lorenzo Mazzucco passe depuis l'enfance tous ses étés en Italie, en Vénétie. Formé à l'École Ferrandi, il a travaillé plus de trente ans en cuisine et en salle, en restaurant et en bar à vin. Il dirige son entreprise de traiteur et d'organisation événementielle depuis 2005 et a créé le concept Mazzucco Mozza & Pizza en 2015 à Paris (7 rue d'Enghien).",
      "worksFor": {"@id": SITE + "/#business"}},
     {"@type": ["FoodEstablishment", "Organization"], "@id": SITE + "/#business",
      "name": "Mazzucco Events", "alternateName": ["Mazzucco", "Mazzucco Mozza & Pizza", "Mazzucco Pizza & Mozza"],
@@ -150,20 +150,22 @@ LD = {
      "taxID": "480403211", "vatID": "FR38480403211",
      "servesCuisine": ["Italienne", "Pizza", "Mozzarella"],
      "slogan": "Pizza & mozzarella pour vos événements",
-     "description": "Traiteur italien événementiel, concept Mazzucco depuis 2015 : bar à pizza et focaccia cuites sur place, bar à mozzarella di bufala, pâtes fraîches dans la roue de parmesan et bar à tiramisu, pour séminaires, salons, soirées d'entreprise, mariages et réceptions privées. Activité exclusivement traiteur et événementiel.",
+     "description": "Traiteur italien événementiel, concept Mazzucco depuis 2015 : bar à pizza et focaccia cuites sur place, bar à mozzarella di bufala, bar à spritz, bar à bruschetta, pâtes fraîches dans la roue de parmesan et bar à tiramisu, pour séminaires, salons, soirées d'entreprise, mariages et réceptions privées. Activité exclusivement traiteur et événementiel.",
      "address": {"@type": "PostalAddress", "streetAddress": "40 B promenade Marx Dormoy", "postalCode": "93460", "addressLocality": "Gournay-sur-Marne", "addressRegion": "Île-de-France", "addressCountry": "FR"},
      "areaServed": [{"@type": "AdministrativeArea", "name": "Île-de-France"}, {"@type": "Country", "name": "France"}],
      "sameAs": ["https://instagram.com/mazzucco_events", "https://www.mazzucco-events.fr/"],
      "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Animations culinaires italiennes", "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bar à pizza et focaccia", "description": "Pâte maturée cinq jours, pizzas cuites sur place devant les invités."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bar à pizza et focaccia", "description": "Pâte maturée quatre à cinq jours, pizzas cuites sur place devant les invités."}},
         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bar à mozzarella", "description": "Mozzarella di bufala Campana nature, fumée ou à la truffe, burrata, antipasti maison."}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pâtes fraîches dans la roue de parmesan"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bar à spritz", "description": "Spritz classique avec différents amers (Aperol, Campari, Select), spritz Saint-Germain et limoncello spritz."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bar à bruschetta", "description": "Pain grillé minute garni devant les invités."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pâtes fraîches dans la roue de parmesan", "description": "Autres recettes de pâtes disponibles ou sur demande."}},
         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bar à tiramisu"}}]}},
     {"@type": "FAQPage", "mainEntity": [
       {"@type": "Question", "name": "Qui est derrière Mazzucco Events ?", "acceptedAnswer": {"@type": "Answer", "text": "Lorenzo Mazzucco, restaurateur italien formé à l'École Ferrandi, à la tête de son entreprise de traiteur et d'organisation événementielle depuis 2005. Il gère chaque événement lui-même, du devis au service."}},
       {"@type": "Question", "name": "Depuis quand existe le concept Mazzucco ?", "acceptedAnswer": {"@type": "Answer", "text": "Depuis 2015. Lorenzo a lancé le concept Mazzucco Mozza & Pizza au 7 rue d'Enghien, à Paris, salué par Time Out, Le Bonbon et le Petit Futé. Aujourd'hui, Mazzucco se consacre uniquement au traiteur et à l'événementiel."}},
       {"@type": "Question", "name": "Où intervient Mazzucco Events ?", "acceptedAnswer": {"@type": "Answer", "text": "Basé en Île-de-France, Mazzucco Events intervient à Paris, dans toute l'Île-de-France et partout en France."}},
-      {"@type": "Question", "name": "Les produits viennent-ils d'Italie ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Mozzarella di bufala de Campanie, burrata des Pouilles, jambon de Parme 16 mois, Parmigiano Reggiano, olives de Gaeta, 'nduja de Calabre, speck et scamorza. Les antipasti, la pâte et les desserts sont faits maison."}},
+      {"@type": "Question", "name": "Les produits viennent-ils d'Italie ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Toutes les mozzarellas, la burrata et la scamorza viennent véritablement de Campanie, à base de lait de bufflonne pour la mozzarella di bufala. La charcuterie est une sélection issue du salon Slow Food, directement d'Italie. Les antipasti et les desserts sont préparés maison."}},
       {"@type": "Question", "name": "Travaillez-vous avec les agences et les traiteurs ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, Mazzucco Events intervient aux côtés de traiteurs et d'agences événementielles, y compris en marque blanche."}}]}
   ]
 }
@@ -220,11 +222,11 @@ def build():
 > Traiteur italien événementiel fondé par Lorenzo Mazzucco. Entreprise créée en 2005 (SIREN 480 403 211, NAF 5621Z), concept Mazzucco Mozza & Pizza depuis 2015. Activité exclusivement traiteur et événementiel, au départ de l'Île-de-France et partout en France.
 
 ## Faits clés
-- Fondateur : Lorenzo Mazzucco, né entre Venise et les Dolomites, diplômé de l'École Ferrandi Paris, plus de 30 ans de métier.
+- Fondateur : Lorenzo Mazzucco, diplômé de l'École Ferrandi Paris, plus de 30 ans en cuisine et en salle (restaurant, bar à vin). Depuis l'enfance, tous ses étés en Italie, en Vénétie.
 - 2015 : lancement du concept Mazzucco Mozza & Pizza au 7 rue d'Enghien, Paris 10e (cité par Time Out, Le Bonbon, Petit Futé, Sortir à Paris).
 - Aujourd'hui : animations culinaires italiennes pour entreprises, agences, traiteurs et particuliers.
-- Animations : bar à pizza et focaccia (pâte maturée 5 jours, cuisson sur place), bar à mozzarella di bufala Campana et burrata, pâtes fraîches dans la roue de Parmigiano Reggiano, bar à tiramisu.
-- Produits italiens : bufala de Campanie, burrata des Pouilles, jambon de Parme 16 mois, olives de Gaeta, 'nduja de Calabre, speck et scamorza.
+- Animations : bar à pizza et focaccia (pâte maturée 4 à 5 jours, cuisson sur place), bar à mozzarella di bufala et burrata, bar à spritz (Aperol, Campari, Select, Saint-Germain, limoncello), bar à bruschetta, pâtes fraîches dans la roue de Parmigiano Reggiano (autres recettes sur demande), bar à tiramisu.
+- Produits italiens : toutes les mozzarellas (bufala au lait de bufflonne, burrata), et la scamorza viennent de Campanie ; charcuterie sélectionnée au salon Slow Food en Italie ; Parmigiano Reggiano.
 - Références : SNCF, Potel & Chabot, Audi France, Traiteur T, Les Camionneuses.
 - Contact : contact@mazzucco.fr · lorenzo@mazzucco.fr · +33 6 18 70 04 82 · Instagram @mazzucco_events
 

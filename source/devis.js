@@ -6,7 +6,7 @@
   var form = $("cfg"); if (!form) return;
   var guests = $("guests"), bubble = $("guideText"), num = String(Math.floor(1000 + Math.random() * 9000));
   $("tNum").textContent = num;
-  var LABELS = { pizza: "Pizzas & focaccias", mozza: "Mozzarella & antipasti", pasta: "Pâtes dans le parmesan", tiramisu: "Verrines de tiramisu" };
+  var LABELS = { pizza: "Pizzas & focaccias", mozza: "Mozzarella & antipasti", spritz: "Spritz", bruschetta: "Bruschette", pasta: "Pâtes dans le parmesan", tiramisu: "Verrines de tiramisu" };
   var OCC_LINES = {
     "Soirée d'entreprise": "Une soirée d'entreprise ? On met l'ambiance de la trattoria.",
     "Séminaire / réunion": "Un séminaire ? Une pause italienne et tout le monde repart motivé.",
@@ -30,6 +30,8 @@
     var repas = s.fmt === "repas", n = s.g, k = s.anim.length, share = k > 1 ? 0.75 : 1, out = [];
     if (s.anim.indexOf("pizza") > -1) out.push([LABELS.pizza, "≈ " + fmtN(Math.ceil(n * (repas ? 0.9 : 0.45) * share)) + " pizzas"]);
     if (s.anim.indexOf("mozza") > -1) out.push([LABELS.mozza, "≈ " + (Math.ceil(n * (repas ? 0.1 : 0.06) * share * 10) / 10).toLocaleString("fr-FR") + " kg"]);
+    if (s.anim.indexOf("spritz") > -1) out.push([LABELS.spritz, "≈ " + fmtN(Math.ceil(n * (repas ? 1.5 : 2))) + " verres"]);
+    if (s.anim.indexOf("bruschetta") > -1) out.push([LABELS.bruschetta, "≈ " + fmtN(Math.ceil(n * (repas ? 1.5 : 2.5) * share)) + " pièces"]);
     if (s.anim.indexOf("pasta") > -1) out.push([LABELS.pasta, "≈ " + fmtN(Math.ceil(n * (repas ? 0.12 : 0.07) * share)) + " kg · " + (n > 300 ? Math.ceil(n / 300) + " meules" : "1 meule")]);
     if (s.anim.indexOf("tiramisu") > -1) out.push([LABELS.tiramisu, fmtN(n) + " verrines"]);
     return { items: out, staff: Math.max(2, Math.ceil(n / 50) + (k > 2 ? 1 : 0)) + " personnes", dur: repas ? "≈ 3 h" : "≈ 2 h 30" };
@@ -58,11 +60,13 @@
     if (src && src.name === "occ") return OCC_LINES[s.occ];
     if (src && src.id === "guests" || src && src.dataset && src.dataset.g) {
       if (s.g < 60) return fmtN(s.g) + " invités : petit comité, grande cuisine.";
-      if (s.g < 250) return fmtN(s.g) + " invités ? Je lance la pâte cinq jours avant, promis.";
+      if (s.g < 250) return fmtN(s.g) + " invités ? Je prépare antipasti et denrées, promis.";
       if (s.g < 700) return fmtN(s.g) + " invités : on sort les grands fours et toute l'équipe.";
       return "Mamma mia, " + fmtN(s.g) + " invités ! On organise ça ensemble, pas de panique.";
     }
-    if (src && src.value === "pasta" && src.checked) return "La roue de parmesan, c'est mon spectacle préféré.";
+    if (src && src.value === "spritz" && src.checked) return "Le spritz, c'est la Vénétie de mes étés. Aperol, Campari, Select ou Saint-Germain ?";
+    if (src && src.value === "bruschetta" && src.checked) return "Bruschetta grillée minute : parfait pour l'apéritif.";
+    if (src && src.value === "pasta" && src.checked) return "La roue de parmesan, c'est mon spectacle préféré. D'autres recettes sur demande.";
     if (src && src.value === "tiramisu" && src.checked) return "Le tiramisu maison, personne n'y résiste.";
     if (src && src.value === "mozza" && src.checked) return "La bufala arrive de Campanie. Fondante, vous verrez.";
     if (src && src.value === "pizza" && src.checked) return "Pizza al momento : cuite sous les yeux de vos invités.";
@@ -92,9 +96,9 @@
   document.querySelectorAll(".presets button").forEach(function (b) { b.addEventListener("click", function () { guests.value = b.dataset.g; render(b); }); });
 
   var PRESETS = {
-    aperitivo: { anim: ["mozza", "pizza"], fmt: "cocktail", line: "Formule Aperitivo : mozzarella, antipasti et pizzette. Parfait pour trinquer." },
+    aperitivo: { anim: ["spritz", "mozza", "bruschetta"], fmt: "cocktail", line: "Formule Aperitivo : spritz, mozzarella et bruschette. Salute !" },
     festa: { anim: ["pizza", "mozza", "tiramisu"], fmt: "cocktail", line: "Formule Festa : la plus demandée. Pizza, mozza et tiramisu." },
-    gala: { anim: ["pizza", "mozza", "pasta", "tiramisu"], fmt: "repas", line: "Formule Gran Galà : les quatre bars, le grand jeu !" }
+    gala: { anim: ["pizza", "mozza", "spritz", "bruschetta", "pasta", "tiramisu"], fmt: "repas", line: "Formule Gran Galà : les six bars, le grand jeu !" }
   };
   function applyHash() {
     var p = PRESETS[(location.hash || "").slice(1)]; if (!p) return;
