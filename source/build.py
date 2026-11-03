@@ -64,8 +64,9 @@ CONTACT = '''<section class="section black contact" id="contact">
 
 FOOTER = '''<footer>
   <div class="wrap foot">
+    <p class="foot-alc">L'abus d'alcool est dangereux pour la santé, à consommer avec modération. La vente et l'offre gratuite de boissons alcooliques aux mineurs sont interdites.</p>
     <div><p><b style="color:#fff">Mazzucco Events</b> · Traiteur italien événementiel, Paris, Île-de-France et toute la France. Concept Mazzucco depuis 2015.</p><p>Bars à pizza et focaccia, mozzarella, spritz, bruschetta, pâtes fraîches dans la roue de parmesan, tiramisu.</p></div>
-    <div><p>Mentions légales : Monsieur Lorenzo Mazzucco, entrepreneur individuel. SIREN 480 403 211 · TVA FR38480403211 · NAF 5621Z.</p><p>Siège : 40 B promenade Marx Dormoy, 93460 Gournay-sur-Marne. © 2026 Mazzucco Events.</p></div>
+    <div><p>Monsieur Lorenzo Mazzucco, entrepreneur individuel · SIREN 480 403 211 · TVA FR38480403211 · NAF 5621Z.</p><p>Siège : 40 B promenade Marx Dormoy, 93460 Gournay-sur-Marne. © 2026 Mazzucco Events · <a href="mentions-legales.html">Mentions légales</a></p></div>
   </div>
 </footer>'''
 
@@ -189,6 +190,11 @@ PAGES = {
     title="Devis Mazzucco Events",
     desc="Composez votre événement italien avec Lorenzo : occasion, nombre d'invités, animations pizza, mozzarella, pâtes et tiramisu. Estimation des quantités et demande de devis en un clic.",
     path="devis.html", ld=LD_DEVIS, body=lambda: body("devis.body.html", "devis"), scripts=["site.js", "devis.js"]),
+  "mentions-legales.html": dict(
+    title="Mentions légales Mazzucco",
+    desc="Mentions légales de Mazzucco Events : éditeur, hébergement, boissons alcoolisées, propriété intellectuelle, données personnelles et cookies.",
+    path="mentions-legales.html", ld={"@context": "https://schema.org", "@type": "WebPage", "name": "Mentions légales Mazzucco Events", "url": SITE + "/mentions-legales.html", "about": {"@id": SITE + "/#business"}},
+    body=lambda: body("mentions.body.html", "mentions"), scripts=["site.js"]),
 }
 
 def full(meta, inner):

@@ -339,3 +339,15 @@ footer { padding-block: 36px calc(110px + env(safe-area-inset-bottom, 0px)); fon
 .radio input[type=range] { width: 74px; accent-color: var(--ink); }
 @media (prefers-reduced-motion: reduce) { .radio.playing .eq i, .radio.playing .onair i { animation: none; height: 60%; } }
 @media (max-width: 640px) { .radio .grille, .radio input[type=range], .radio .track { display: none; } .radio { padding-right: 12px; } }
+
+/* ---------- Mentions légales & alcool ---------- */
+.alc { font-size: .84rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; margin-top: 4px; }
+.foot-alc { grid-column: 1 / -1; color: #F1ECE2; font-weight: 500; padding-bottom: 18px; border-bottom: 1px solid #2A2927; }
+footer a { color: #F1ECE2; }
+.legal { max-width: 820px; display: grid; gap: 40px; }
+.legal h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-bottom: 12px; }
+.legal p { color: var(--ink-2); max-width: 68ch; }
+.legal p + p, .legal ul + p { margin-top: 10px; }
+.legal ul { margin: 10px 0 0; padding-left: 20px; color: var(--ink-2); display: grid; gap: 4px; }
+.alc-box { border: 2px solid var(--ink); padding: 22px 24px; display: grid; gap: 6px; box-shadow: 5px 5px 0 var(--ink); }
+.alc-main { font-family: var(--caps); text-transform: uppercase; letter-spacing: .04em; font-size: 1.15rem; color: var(--ink) !important; }

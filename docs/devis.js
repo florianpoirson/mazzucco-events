@@ -64,7 +64,7 @@
       if (s.g < 700) return fmtN(s.g) + " invités : on sort les grands fours et toute l'équipe.";
       return "Mamma mia, " + fmtN(s.g) + " invités ! On organise ça ensemble, pas de panique.";
     }
-    if (src && src.value === "spritz" && src.checked) return "Le spritz, c'est la Vénétie de mes étés. Aperol, Campari, Select ou Saint-Germain ?";
+    if (src && src.value === "spritz") return null;
     if (src && src.value === "bruschetta" && src.checked) return "Bruschetta grillée minute : parfait pour l'apéritif.";
     if (src && src.value === "pasta" && src.checked) return "La roue de parmesan, c'est mon spectacle préféré. D'autres recettes sur demande.";
     if (src && src.value === "tiramisu" && src.checked) return "Le tiramisu maison, personne n'y résiste.";
@@ -85,6 +85,7 @@
     if (!e.items.length) { var p = document.createElement("div"); p.className = "empty"; p.textContent = "Choisissez au moins une animation."; box.appendChild(p); }
     e.items.forEach(function (it) { var r = document.createElement("div"); r.className = "row"; var a = document.createElement("span"); a.textContent = "1× " + it[0]; var b = document.createElement("span"); b.textContent = it[1]; r.appendChild(a); r.appendChild(b); box.appendChild(r); });
     $("tStaff").textContent = e.staff; $("tDur").textContent = e.dur;
+    $("tAlc").hidden = s.anim.indexOf("spritz") < 0;
     $("stamp").classList.toggle("on", ready(s));
     $("sendWa").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(text(s));
     var l = lineFor(src, s); if (l) say(l);
@@ -96,7 +97,7 @@
   document.querySelectorAll(".presets button").forEach(function (b) { b.addEventListener("click", function () { guests.value = b.dataset.g; render(b); }); });
 
   var PRESETS = {
-    aperitivo: { anim: ["spritz", "mozza", "bruschetta"], fmt: "cocktail", line: "Formule Aperitivo : spritz, mozzarella et bruschette. Salute !" },
+    aperitivo: { anim: ["spritz", "mozza", "bruschetta"], fmt: "cocktail", line: "Formule Aperitivo : spritz, mozzarella et bruschette." },
     festa: { anim: ["pizza", "mozza", "tiramisu"], fmt: "cocktail", line: "Formule Festa : la plus demandée. Pizza, mozza et tiramisu." },
     gala: { anim: ["pizza", "mozza", "spritz", "bruschetta", "pasta", "tiramisu"], fmt: "repas", line: "Formule Gran Galà : les six bars, le grand jeu !" }
   };
