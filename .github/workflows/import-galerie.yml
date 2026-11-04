@@ -27,4 +27,5 @@ jobs:
           git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
           git add tools/galerie-import
           git commit -m "Import des photos de mazzucco-events.fr" || echo "rien à importer"
-          git push
+          for i in 1 2 3 4 5; do git push && exit 0; sleep 10; git pull --rebase origin main; done
+          exit 1
