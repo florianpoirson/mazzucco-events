@@ -67,12 +67,12 @@ p { margin: 0; }
 header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 74px; }
 .nav .logo img { height: 44px; width: auto; }
-.nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
-.nav ul a { font: 500 .84rem var(--caps); letter-spacing: .16em; text-transform: uppercase; text-decoration: none; color: var(--ink-2); }
+.nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.nav ul a { white-space: nowrap; font: 500 .82rem var(--caps); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--ink-2); }
 .nav ul a:hover, .nav ul a[aria-current="page"] { color: var(--kraft-deep); }
-.nav .btn { padding: 13px 18px; font-size: .82rem; }
+.nav .btn { padding: 13px 18px; font-size: .82rem; white-space: nowrap; }
 .menu-btn { display: none; background: none; border: 1.5px solid var(--ink); padding: 9px 14px; font: 500 .8rem var(--caps); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; color: var(--ink); }
-@media (max-width: 1020px) {
+@media (max-width: 1180px) {
   .nav ul { display: none; }
   .nav ul.open { display: grid; position: absolute; top: 74px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--line); padding: 12px var(--gutter-r) 22px var(--gutter-l); }
   .nav ul.open a { display: block; padding: 12px 0; font-size: 1rem; }
@@ -351,3 +351,24 @@ footer a { color: #F1ECE2; }
 .legal ul { margin: 10px 0 0; padding-left: 20px; color: var(--ink-2); display: grid; gap: 4px; }
 .alc-box { border: 2px solid var(--ink); padding: 22px 24px; display: grid; gap: 6px; box-shadow: 5px 5px 0 var(--ink); }
 .alc-main { font-family: var(--caps); text-transform: uppercase; letter-spacing: .04em; font-size: 1.15rem; color: var(--ink) !important; }
+
+/* ---------- Galerie ---------- */
+.gal-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.gal-filters button { font: 500 .8rem var(--caps); letter-spacing: .14em; text-transform: uppercase; padding: 10px 14px; border: 1.5px solid var(--line); background: var(--white); color: var(--ink); cursor: pointer; }
+.gal-filters button:hover { border-color: var(--ink); }
+.gal-filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.gal { columns: 3 280px; column-gap: 16px; }
+.shot { break-inside: avoid; margin: 0 0 16px; background: var(--white); }
+.shot button { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; position: relative; }
+.shot img { width: 100%; height: auto; display: block; transition: filter .2s; }
+.shot button:hover img { filter: brightness(.9); }
+.shot figcaption { font: 500 .74rem var(--caps); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding: 10px 2px 0; }
+.gal-note { margin-top: 28px; color: var(--muted); font-size: .92rem; max-width: 64ch; }
+#lightbox { position: fixed; inset: 0; z-index: 120; background: rgba(10,10,10,.94); display: grid; grid-template-rows: 1fr auto; align-items: center; justify-items: center; padding: calc(56px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+#lightbox img { max-width: min(100%, 1200px); max-height: 78vh; width: auto; height: auto; object-fit: contain; }
+#lightbox .lb-cap { color: #E9E4DA; font: 500 .82rem var(--caps); letter-spacing: .16em; text-transform: uppercase; padding-top: 14px; text-align: center; }
+#lightbox button { position: absolute; background: var(--white); color: var(--ink); border: 0; width: 48px; height: 48px; border-radius: 50%; font: 500 1.4rem/1 var(--caps); cursor: pointer; display: grid; place-items: center; }
+#lightbox .lb-close { top: calc(12px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); }
+#lightbox .lb-prev { left: max(16px, env(safe-area-inset-left, 0px)); top: 50%; transform: translateY(-50%); }
+#lightbox .lb-next { right: max(16px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); }
+@media (max-width: 640px) { #lightbox .lb-prev, #lightbox .lb-next { top: auto; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); transform: none; } }

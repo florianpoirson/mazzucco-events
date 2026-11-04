@@ -2,10 +2,12 @@
 (function () {
   "use strict";
   var WA = "33618700482";
+  var SERVICE_RATE = 15; /* % service et logistique, ajouté au montant des prestations */
   var $ = function (id) { return document.getElementById(id); };
   var form = $("cfg"); if (!form) return;
   var guests = $("guests"), bubble = $("guideText"), num = String(Math.floor(1000 + Math.random() * 9000));
   $("tNum").textContent = num;
+  $("tSvc").textContent = "+ " + SERVICE_RATE + " %";
   var LABELS = { pizza: "Pizzas & focaccias", mozza: "Mozzarella & antipasti", spritz: "Spritz", bruschetta: "Bruschette", pasta: "Pâtes dans le parmesan", tiramisu: "Verrines de tiramisu" };
   var OCC_LINES = {
     "Soirée d'entreprise": "Une soirée d'entreprise ? On met l'ambiance de la trattoria.",
@@ -41,11 +43,13 @@
     var L = ["Bonjour Lorenzo, voici ma demande Mazzucco Events (comanda n° " + num + ") :",
       "• Occasion : " + s.occ, "• Invités : " + fmtN(s.g), "• Format : " + (s.fmt === "repas" ? "repas complet" : "cocktail dînatoire"),
       "• Animations : " + (s.anim.length ? s.anim.map(function (a) { return LABELS[a]; }).join(", ") : "à définir"),
-      "• Date : " + fmtDate(s.date), "• Lieu : " + (s.city || "à définir")];
+      "• Date : " + fmtDate(s.date), "• Lieu : " + (s.city || "à définir"),
+      "• Service & logistique : " + SERVICE_RATE + " % du montant des prestations"];
     if (s.name || s.company) L.push("• Contact : " + [s.name, s.company].filter(Boolean).join(", "));
     if (s.email) L.push("• E-mail : " + s.email);
     if (s.phone) L.push("• Téléphone : " + s.phone);
     if (s.msg) L.push("• Précisions : " + s.msg);
+    L.push("", "Estimation indicative et sans engagement. Je souhaite convenir d'un rendez-vous pour établir le devis définitif.");
     return L.join("\n");
   }
   function ready(s) { return !!(s.anim.length && s.name && (s.email || s.phone) && s.date); }

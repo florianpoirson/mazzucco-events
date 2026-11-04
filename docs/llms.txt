@@ -13,4 +13,5 @@
 
 ## Pages
 - [Accueil](https://www.mazzucco.fr/): présentation, animations, produits, catalogues, presse, FAQ
-- [Devis](https://www.mazzucco.fr/devis.html): configurateur de devis
+- [Devis](https://www.mazzucco.fr/devis.html): configurateur de devis (estimation indicative, service et logistique 15 %, devis définitif après rendez-vous)
+- [Galerie](https://www.mazzucco.fr/galerie.html): photos d'événements

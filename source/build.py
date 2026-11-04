@@ -37,6 +37,7 @@ def header(active):
       <li><a href="./#produits">Produits</a></li>
       <li><a href="./#catalogues">Catalogues</a></li>
       <li><a href="./#presse">Presse</a></li>
+      <li><a href="galerie.html"{cur("galerie")}>Galerie</a></li>
       <li><a href="./#faq">FAQ</a></li>
       <li><a href="devis.html"{cur("devis")}>Devis</a></li>
     </ul>
@@ -66,7 +67,7 @@ FOOTER = '''<footer>
   <div class="wrap foot">
     <p class="foot-alc">L'abus d'alcool est dangereux pour la santé, à consommer avec modération. La vente et l'offre gratuite de boissons alcooliques aux mineurs sont interdites.</p>
     <div><p><b style="color:#fff">Mazzucco Events</b> · Traiteur italien événementiel, Paris, Île-de-France et toute la France. Concept Mazzucco depuis 2015.</p><p>Bars à pizza et focaccia, mozzarella, spritz, bruschetta, pâtes fraîches dans la roue de parmesan, tiramisu.</p></div>
-    <div><p>Monsieur Lorenzo Mazzucco, entrepreneur individuel · SIREN 480 403 211 · TVA FR38480403211 · NAF 5621Z.</p><p>Siège : 40 B promenade Marx Dormoy, 93460 Gournay-sur-Marne. © 2026 Mazzucco Events · <a href="mentions-legales.html">Mentions légales</a></p></div>
+    <div><p>Monsieur Lorenzo Mazzucco, entrepreneur individuel · SIREN 480 403 211 · TVA FR38480403211 · NAF 5621Z.</p><p>Siège : 61 boulevard Aristide Briand, 93330 Neuilly-sur-Marne. © 2026 Mazzucco Events · <a href="mentions-legales.html">Mentions légales</a></p></div>
   </div>
 </footer>'''
 
@@ -152,7 +153,7 @@ LD = {
      "servesCuisine": ["Italienne", "Pizza", "Mozzarella"],
      "slogan": "Pizza & mozzarella pour vos événements",
      "description": "Traiteur italien événementiel, concept Mazzucco depuis 2015 : bar à pizza et focaccia cuites sur place, bar à mozzarella di bufala, bar à spritz, bar à bruschetta, pâtes fraîches dans la roue de parmesan et bar à tiramisu, pour séminaires, salons, soirées d'entreprise, mariages et réceptions privées. Activité exclusivement traiteur et événementiel.",
-     "address": {"@type": "PostalAddress", "streetAddress": "40 B promenade Marx Dormoy", "postalCode": "93460", "addressLocality": "Gournay-sur-Marne", "addressRegion": "Île-de-France", "addressCountry": "FR"},
+     "address": {"@type": "PostalAddress", "streetAddress": "61 boulevard Aristide Briand", "postalCode": "93330", "addressLocality": "Neuilly-sur-Marne", "addressRegion": "Île-de-France", "addressCountry": "FR"},
      "areaServed": [{"@type": "AdministrativeArea", "name": "Île-de-France"}, {"@type": "Country", "name": "France"}],
      "sameAs": ["https://instagram.com/mazzucco_events", "https://www.mazzucco-events.fr/"],
      "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Animations culinaires italiennes", "itemListElement": [
@@ -190,6 +191,11 @@ PAGES = {
     title="Devis Mazzucco Events",
     desc="Composez votre événement italien avec Lorenzo : occasion, nombre d'invités, animations pizza, mozzarella, pâtes et tiramisu. Estimation des quantités et demande de devis en un clic.",
     path="devis.html", ld=LD_DEVIS, body=lambda: body("devis.body.html", "devis"), scripts=["site.js", "devis.js"]),
+  "galerie.html": dict(
+    title="Galerie Mazzucco Events",
+    desc="Galerie photos Mazzucco Events : bars à pizza, mozzarella, pâtes dans la roue de parmesan, tiramisu et buffets italiens réalisés pour des événements d'entreprise et des réceptions.",
+    path="galerie.html", ld={"@context": "https://schema.org", "@type": "ImageGallery", "name": "Galerie Mazzucco Events", "url": SITE + "/galerie.html", "about": {"@id": SITE + "/#business"}},
+    body=lambda: body("galerie.body.html", "galerie"), scripts=["site.js", "galerie.js"]),
   "mentions-legales.html": dict(
     title="Mentions légales Mazzucco",
     desc="Mentions légales de Mazzucco Events : éditeur, hébergement, boissons alcoolisées, propriété intellectuelle, données personnelles et cookies.",
@@ -207,7 +213,7 @@ def build():
         out = os.path.join(ROOT, "out", target)
         shutil.rmtree(out, ignore_errors=True); os.makedirs(out)
         shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(out, "assets"))
-        for f in ("style.css", "site.js", "devis.js"): shutil.copy(os.path.join(ROOT, f), out)
+        for f in ("style.css", "site.js", "devis.js", "galerie.js"): shutil.copy(os.path.join(ROOT, f), out)
         for name, p in PAGES.items():
             meta = head(p["title"], p["desc"], p["path"]) + "\n" + ld(p["ld"])
             scripts = "\n".join(f'<script src="{s}"></script>' for s in p["scripts"])
@@ -222,7 +228,8 @@ def build():
             open(os.path.join(out, "sitemap.xml"), "w").write(
                 '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                 f'  <url><loc>{SITE}/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>\n'
-                f'  <url><loc>{SITE}/devis.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>\n</urlset>\n')
+                f'  <url><loc>{SITE}/devis.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>\n'
+                f'  <url><loc>{SITE}/galerie.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>\n</urlset>\n')
             open(os.path.join(out, "llms.txt"), "w").write(f"""# Mazzucco Events
 
 > Traiteur italien événementiel fondé par Lorenzo Mazzucco. Entreprise créée en 2005 (SIREN 480 403 211, NAF 5621Z), concept Mazzucco Mozza & Pizza depuis 2015. Activité exclusivement traiteur et événementiel, au départ de l'Île-de-France et partout en France.
@@ -238,7 +245,8 @@ def build():
 
 ## Pages
 - [Accueil]({SITE}/): présentation, animations, produits, catalogues, presse, FAQ
-- [Devis]({SITE}/devis.html): configurateur de devis
+- [Devis]({SITE}/devis.html): configurateur de devis (estimation indicative, service et logistique 15 %, devis définitif après rendez-vous)
+- [Galerie]({SITE}/galerie.html): photos d'événements
 """)
 
 if __name__ == "__main__":
