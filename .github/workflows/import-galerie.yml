@@ -1,0 +1,30 @@
+name: Import des photos de mazzucco-events.fr
+on:
+  push:
+    paths:
+      - tools/galerie-urls.txt
+      - .github/workflows/import-galerie.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Télécharger les photos
+        run: |
+          mkdir -p tools/galerie-import
+          while read -r url; do
+            [ -z "$url" ] && continue
+            name=$(basename "${url%%\?*}")
+            curl -fsSL --retry 3 -o "tools/galerie-import/$name" "$url" || echo "échec : $url"
+          done < tools/galerie-urls.txt
+          ls -la tools/galerie-import
+      - name: Enregistrer dans le dépôt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add tools/galerie-import
+          git commit -m "Import des photos de mazzucco-events.fr" || echo "rien à importer"
+          git push
