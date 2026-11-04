@@ -9,6 +9,8 @@
   --line: #DAD6CE;
   --kraft: #B48D5C;
   --kraft-deep: #7E5F38;
+  --gold: #D99A2E;
+  --wood-base: #AF9A80;
   --kraft-pale: #E7D6BA;
   --kraft-ink: #2E2418;
   --stamp: #B3261E;
@@ -47,7 +49,9 @@ p { margin: 0; }
 .btn-ink:hover { background: var(--ink-2); }
 .btn-white { background: var(--white); color: var(--ink); }
 .btn-line { border-color: currentColor; background: transparent; color: inherit; }
-.kraft { background-color: var(--kraft); background-image: var(--kraft-tex); color: var(--ink); }
+/* Wood planks taken from the Mazzucco truck wrap (mirrored into a seamless tile) */
+.kraft { background: var(--wood-base) url("assets/bois.jpg") repeat center top / 600px auto; color: var(--ink); }
+.section.kraft, .facts.kraft, .proof-band.kraft { background-image: linear-gradient(rgba(250,244,234,.3), rgba(250,244,234,.3)), url("assets/bois.jpg"); background-size: auto, 600px auto; }
 .kraft .kicker, .kraft .lede { color: var(--kraft-ink); }
 .black { background: var(--ink); color: var(--white); }
 .black .lede { color: #B9B4AC; }
@@ -90,7 +94,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); min-height: min(700px, 84vh); }
 .hero-copy { padding-block: clamp(56px, 8vw, 104px); padding-right: clamp(24px, 4vw, 64px); display: grid; align-content: center; gap: 28px; min-width: 0; }
 .hero h1 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); font-weight: 500; line-height: .92; }
-.hero h1 .script { display: block; color: var(--kraft); font-size: .62em; line-height: 1.05; margin-top: .12em; transform: rotate(-4deg); transform-origin: left; }
+.hero h1 .script { display: block; color: var(--gold); font-size: .62em; line-height: 1.05; margin-top: .12em; transform: rotate(-4deg); transform-origin: left; }
 .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-stage { position: relative; margin-right: calc(-1 * (var(--gutter-r) + max(0px, (100vw - 1240px) / 2))); display: grid; align-items: end; justify-items: center; padding: 40px 24px 0; overflow: hidden; }
 .hero-stage .lorenzo { width: min(100%, 380px); position: relative; z-index: 1; }
@@ -179,7 +183,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .box .lid { background: var(--ink); color: var(--white); padding: 22px 24px 20px; display: grid; gap: 4px; position: relative; }
 .box .lid .f { font: 500 .74rem var(--caps); letter-spacing: .22em; text-transform: uppercase; color: var(--kraft-pale); }
 .box .lid h3 { font-family: var(--script); text-transform: none; font-weight: 400; font-size: 2.6rem; line-height: 1.05; letter-spacing: 0; }
-.box .lid .pop { position: absolute; top: 18px; right: 18px; font: 500 .68rem var(--caps); letter-spacing: .16em; text-transform: uppercase; background: var(--kraft); color: var(--ink); padding: 5px 8px; }
+.box .lid .pop { position: absolute; top: 18px; right: 18px; font: 500 .68rem var(--caps); letter-spacing: .16em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 5px 8px; }
 .box .in { padding: 22px 24px 26px; display: grid; gap: 16px; grid-template-rows: auto 1fr auto; }
 .box .for { color: var(--muted); font-size: .96rem; }
 .box ul { list-style: none; margin: 0; padding: 0; align-content: start; display: grid; }
@@ -202,7 +206,7 @@ header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
 .devis-hero { padding-block: clamp(40px, 6vw, 72px); }
 .devis-hero .grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; align-items: end; }
 .devis-hero h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: .95; }
-.devis-hero h1 .script { color: var(--kraft); display: block; font-size: .6em; transform: rotate(-3deg); transform-origin: left; margin-top: .1em; }
+.devis-hero h1 .script { color: var(--gold); display: block; font-size: .6em; transform: rotate(-3deg); transform-origin: left; margin-top: .1em; }
 .devis-hero p { margin-top: 20px; }
 @media (max-width: 760px) { .devis-hero .grid { grid-template-columns: 1fr; } }
 .config { background: var(--paper); }
@@ -372,3 +376,9 @@ footer a { color: #F1ECE2; }
 #lightbox .lb-prev { left: max(16px, env(safe-area-inset-left, 0px)); top: 50%; transform: translateY(-50%); }
 #lightbox .lb-next { right: max(16px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); }
 @media (max-width: 640px) { #lightbox .lb-prev, #lightbox .lb-next { top: auto; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); transform: none; } }
+
+/* ---------- Bois & liseré doré (habillage du camion) ---------- */
+.proof-band { position: relative; padding-top: clamp(34px, 5vw, 70px); }
+.swoosh { position: absolute; top: 0; left: 0; width: 100%; height: clamp(34px, 5vw, 70px); display: block; }
+footer { border-top: 3px solid var(--gold); }
+.contact .logo-w { filter: drop-shadow(0 1px 0 rgba(0,0,0,.2)); }
